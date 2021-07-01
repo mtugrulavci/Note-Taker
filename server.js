@@ -3,6 +3,7 @@
 const fs = require('fs');// added because we will write 
 
 const express = require('express');
+const uuid = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -36,14 +37,17 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res)=>{
     const newNote = {
         title: req.body.title,
-        text: req.body.text
-    }
-    if(!newNote.title || !newNote.text){
-       return res.status(400).json({msg: 'Please include title and text'});
+        text: req.body.text,
+        id: uuid.v4(),
     }
     notes.push(newNote);
   });
-  
+  //delete
+  app.delete('api/notes:id', (req,res)=>{
+  notes.splice()
+  })
+
+
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
   });
