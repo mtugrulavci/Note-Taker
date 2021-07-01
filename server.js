@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 const path = require('path');// it will be used for sendFiles
 const { notes } = require('./db/db.json');
+const { runInNewContext } = require('vm');
 
 //set a static folder - i could not be able to use css file without this 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,10 +26,23 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public','notes.html'));
   });
-  app.get('/api/notes', (req, res) => {
+
+  // Gets all notes
+app.get('/api/notes', (req, res) => {
     return res.json(notes);
   });
 
+  //Create a note
+app.post('/api/notes', (req, res)=>{
+    const newNote = {
+        title: req.body.title,
+        text: req.body.text
+    }
+    if(!newNote.title || !newNote.text){
+       return res.status(400).json({msg: 'Please include title and text'});
+    }
+    notes.push(newNote);
+  });
   
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
