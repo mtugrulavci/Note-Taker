@@ -1,6 +1,8 @@
 
   # Project Title : Note-Taker
   [Heroku Link - the URL of the functional website](https://shielded-headland-94315.herokuapp.com/)
+
+   ![Main page](./images/mainpage.png)
       
   ## Description
       It is a back-end express.js application to create a website which user can crete and delete notes. Client can also retrive data on json format.
