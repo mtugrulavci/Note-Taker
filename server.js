@@ -19,13 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public','index.html'));
-});
-
-
 // Create an `/notes` route that returns `add.html`
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public','notes.html'));
@@ -59,11 +52,11 @@ app.get('/api/notes', (req, res) => {
     fs.writeFileSync('./db/db.json', JSON.stringify(notes, null,2));
       res.json(notes);
  });
-/*
+
  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public','index.html'));
 }); 
-*/
+
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
