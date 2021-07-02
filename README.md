@@ -15,7 +15,7 @@
   * [Questions](#questions)
 
   ## Installation
-     npm install, npm i express, npm i uuid
+     npm install,  npm i express, npm i uuid
 
   ## Usage
    [Usage Demo](https://drive.google.com/file/d/1k8pm3os3K3GZw3ufpH6JcmmXO73jZnkS/view)
