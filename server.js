@@ -32,9 +32,7 @@ app.get('/notes', (req, res) => {
 
   // Gets all notes
 app.get('/api/notes', (req, res) => {
-   // let { notes } = require('./db/db.json');
-    let notes= JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-
+  let notes= JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
   res.json(notes);
   });
 
@@ -47,20 +45,17 @@ app.get('/api/notes', (req, res) => {
     }
    // let {notes}  = require('./db/db.json');
    let notes= JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-
     notes.push(newNote); // pushes the new entry to the notes array
     //writes the new entry to the jason file
     fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
       res.json(notes);
   });
-
+  
+//DELETE
   app.delete(`/api/notes/:id`, (req,res)=>{
     let notes= JSON.parse(fs.readFileSync("./db/db.json","utf8"));
-   //let { notes } = require('./db/db.json');
     notes = notes.filter(notes=> notes.id.toString()!== req.params.id.toString());
-
     fs.writeFileSync('./db/db.json', JSON.stringify(notes, null,2));
-
       res.json(notes);
  });
 
