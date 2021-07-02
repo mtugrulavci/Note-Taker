@@ -38,15 +38,22 @@ app.post('/api/notes', (req, res)=>{
     const newNote = {
         title: req.body.title,
         text: req.body.text,
-        id: uuid.v4(),
+        id: uuid.v4()
     }
-    notes.push(newNote);
+    notes.push(newNote); // pushes the new entry to the notes array
+    //writes the new entry to the jason file
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify({ notes }, null, 2)
+      );
   });
-  //delete
+/*
   app.delete('api/notes:id', (req,res)=>{
-  notes.splice()
+   const a = notes.filter(notes => notes.id === id)[0];
+   
+   notes.push(a);
   })
-
+  */
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
