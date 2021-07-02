@@ -6,11 +6,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 3001;
-
 const path = require('path');// it will be used for sendFiles
-
-
-
 const { Console } = require('console');
 //set a static folder - i could not be able to use css file without this 
 app.use(express.static(path.join(__dirname, 'public')));
