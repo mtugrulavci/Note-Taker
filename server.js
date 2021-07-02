@@ -21,7 +21,7 @@ app.use(express.json());
 
 
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public','index.html'));
 });
 
@@ -50,7 +50,7 @@ app.get('/api/notes', (req, res) => {
     fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
       res.json(notes);
   });
-  
+
 //DELETE
   app.delete(`/api/notes/:id`, (req,res)=>{
     let notes= JSON.parse(fs.readFileSync("./db/db.json","utf8"));

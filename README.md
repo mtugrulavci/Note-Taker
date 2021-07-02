@@ -2,7 +2,7 @@
   # Project Title : Note-Taker
       
   ## Description
-      It is a back-end express.js application to create a website which user can crete and delete  notClient can also retrive data on json format.
+      It is a back-end express.js application to create a website which user can crete and delete notes. Client can also retrive data on json format.
 
   ## Table of Contents
   * [Installation](#installation)
